@@ -4,16 +4,14 @@
 #include <iostream>
 #include "Animal.hpp"
 
-class Cat
+class Cat: public Animal
 {
     public:
         Cat(void);
         Cat(const Cat& src);
         Cat& operator=(const Cat& rhs);
         ~Cat(void);
-
-    private:
-
+        void makeSound(void) const;
 };
 
 #endif
