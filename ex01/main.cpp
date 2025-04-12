@@ -21,7 +21,7 @@ void printHeader(const std::string& str)
 int main(void)
 {
     {
-        int size = 10;
+        int size = 2;
         const Animal* animals[size];
 
         for (int i = 0; i < size; i++)
@@ -34,8 +34,9 @@ int main(void)
         for (int i = 0; i < size; i++)
             animals[i]->makeSound();
 
-        for (int i = size - 1; i > 0; i--)
+        for (int i = size - 1; i >= 0; i--)
         {
+            std::cout << "Destroying animal : " << animals[i]->getType() << std::endl;
             delete animals[i];
             std::cout << "ICI\n";
         }
