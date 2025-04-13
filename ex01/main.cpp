@@ -21,7 +21,7 @@ void printHeader(const std::string& str)
 int main(void)
 {
     {
-        int size = 2;
+        int size = 10;
         const Animal* animals[size];
 
         for (int i = 0; i < size; i++)
@@ -38,7 +38,6 @@ int main(void)
         {
             std::cout << "Destroying animal : " << animals[i]->getType() << std::endl;
             delete animals[i];
-            std::cout << "ICI\n";
         }
     }
 

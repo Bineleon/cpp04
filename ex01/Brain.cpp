@@ -8,7 +8,8 @@ Brain::Brain(void)
 Brain::Brain(const Brain& src)
 {
     std::cout << "Brain copy constructor called" << std::endl;
-    *this = src;
+    for (int i = 0; i < 100; ++i)
+        this->_ideas[i] = src._ideas[i];
 }
 
 Brain& Brain::operator=(const Brain& rhs)
@@ -22,4 +23,14 @@ Brain& Brain::operator=(const Brain& rhs)
 Brain::~Brain(void)
 {
     std::cout << "Brain destructor called" << std::endl;
+}
+
+std::string Brain::getIdea(int i) const
+{
+    return _ideas[i];
+}
+
+void Brain::setIdea(int i, std::string idea)
+{
+    _ideas[i] = idea;
 }
