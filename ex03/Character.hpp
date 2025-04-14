@@ -1,21 +1,22 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
-class AAnimal
+class Character: public ICharacter
 {
     public:
-        AAnimal(void);
-        AAnimal(std::string type);
-        AAnimal(const AAnimal& src);
-        AAnimal& operator=(const AAnimal& rhs);
-        virtual ~AAnimal(void);
-		virtual void makeSound(void) const = 0;
-        std::string getType( void ) const;
+        Character(void);
+        Character(const Character& src);
+        Character& operator=(const Character& rhs);
+        ~Character(void);
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 
-    protected:
-		std::string _type;
+    private:
 
 };
 

@@ -3,14 +3,14 @@
 
 #include <iostream>
 
-class WrongAnimal
+class WrongAAnimal
 {
     public:
-        WrongAnimal(void);
-        WrongAnimal(std::string type);
-        WrongAnimal(const WrongAnimal& src);
-        WrongAnimal& operator=(const WrongAnimal& rhs);
-        ~WrongAnimal(void);
+        WrongAAnimal(void);
+        WrongAAnimal(std::string type);
+        WrongAAnimal(const WrongAAnimal& src);
+        WrongAAnimal& operator=(const WrongAAnimal& rhs);
+        ~WrongAAnimal(void);
 		void makeSound(void) const;
         std::string getType( void ) const;
 

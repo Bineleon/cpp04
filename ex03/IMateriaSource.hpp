@@ -1,21 +1,15 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef IMATERIASOURCE_HPP
+#define IMATERIASOURCE_HPP
 
 #include <iostream>
+#include "AMateria.hpp"	
 
-class AAnimal
+class IMateriaSource
 {
     public:
-        AAnimal(void);
-        AAnimal(std::string type);
-        AAnimal(const AAnimal& src);
-        AAnimal& operator=(const AAnimal& rhs);
-        virtual ~AAnimal(void);
-		virtual void makeSound(void) const = 0;
-        std::string getType( void ) const;
-
-    protected:
-		std::string _type;
+        virtual ~IMateriaSource(void);
+		virtual void learnMateria(AMateria*) = 0;
+		virtual AMateria* createMateria(std::string const & type) = 0;
 
 };
 

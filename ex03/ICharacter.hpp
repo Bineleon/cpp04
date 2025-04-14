@@ -1,22 +1,17 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef ICHARACTER_HPP
+#define ICHARACTER_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
 
-class AAnimal
+class ICharacter
 {
-    public:
-        AAnimal(void);
-        AAnimal(std::string type);
-        AAnimal(const AAnimal& src);
-        AAnimal& operator=(const AAnimal& rhs);
-        virtual ~AAnimal(void);
-		virtual void makeSound(void) const = 0;
-        std::string getType( void ) const;
-
-    protected:
-		std::string _type;
-
+	public:
+	virtual ~ICharacter() {}
+	virtual std::string const & getName() const = 0;
+	virtual void equip(AMateria* m) = 0;
+	virtual void unequip(int idx) = 0;
+	virtual void use(int idx, ICharacter& target) = 0;
 };
 
 # define RESET "\033[0m"

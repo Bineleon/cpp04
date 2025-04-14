@@ -1,21 +1,21 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef ICE_HPP
+#define ICE_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
 
-class AAnimal
+class Ice: public AMateria
 {
     public:
-        AAnimal(void);
-        AAnimal(std::string type);
-        AAnimal(const AAnimal& src);
-        AAnimal& operator=(const AAnimal& rhs);
-        virtual ~AAnimal(void);
-		virtual void makeSound(void) const = 0;
-        std::string getType( void ) const;
-
-    protected:
-		std::string _type;
+        Ice(void);
+		Ice(std::string type);
+        Ice(const Ice& src);
+        Ice& operator=(const Ice& rhs);
+        ~Ice(void);
+		AMateria* clone() const;
+		void use(ICharacter& target);
+		
+    private:
 
 };
 

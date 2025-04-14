@@ -1,5 +1,5 @@
 #include <iomanip>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
@@ -21,18 +21,24 @@ void printHeader(const std::string& str)
 
 int main(void)
 {
+	// {
+	// 	printHeader("Test : Animal instance (should fail)");
+	// 	const AAnimal* i = new Animal();
+	
+	// 	delete i;
+	// }
 	{
 		printHeader("Test : Construction / Destruction");
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
 	
 		delete j;//should not create a leak
 		delete i;
 	}
     {
-		printHeader("Test : Half cat, half Dog Animal array");
+		printHeader("Test : Half cat, half Dog AAnimal array");
         int size = 10;
-        const Animal* animals[size];
+        const AAnimal* animals[size];
 
         for (int i = 0; i < size; i++)
         {

@@ -1,39 +1,39 @@
-#include "WrongAnimal.hpp"
+#include "WrongAAnimal.hpp"
 
-WrongAnimal::WrongAnimal(void): _type("WrongAnimal")
+WrongAAnimal::WrongAAnimal(void): _type("WrongAAnimal")
 {
-    std::cout << "WrongAnimal default constructor called" << std::endl;
+    std::cout << "WrongAAnimal default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type): _type(type)
+WrongAAnimal::WrongAAnimal(std::string type): _type(type)
 {
-    std::cout << "WrongAnimal constructor called with type : " << type << std::endl;
+    std::cout << "WrongAAnimal constructor called with type : " << type << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal& src)
+WrongAAnimal::WrongAAnimal(const WrongAAnimal& src)
 {
-    std::cout << "WrongAnimal copy constructor called" << std::endl;
+    std::cout << "WrongAAnimal copy constructor called" << std::endl;
     *this = src;
 }
 
-WrongAnimal& WrongAnimal::operator=(const WrongAnimal& rhs)
+WrongAAnimal& WrongAAnimal::operator=(const WrongAAnimal& rhs)
 {
-    std::cout << "WrongAnimal copy assignment operator called" << std::endl;
+    std::cout << "WrongAAnimal copy assignment operator called" << std::endl;
     _type = rhs._type;
     return *this;
 }
 
-WrongAnimal::~WrongAnimal(void)
+WrongAAnimal::~WrongAAnimal(void)
 {
-    std::cout << "WrongAnimal destructor called" << std::endl;
+    std::cout << "WrongAAnimal destructor called" << std::endl;
 }
 
-std::string WrongAnimal::getType( void ) const
+std::string WrongAAnimal::getType( void ) const
 {
     return (_type);
 }
 
-void WrongAnimal::makeSound(void) const
+void WrongAAnimal::makeSound(void) const
 {
     std::cout << "Plop plop i'm an Wronganimal!" << std::endl;
 }

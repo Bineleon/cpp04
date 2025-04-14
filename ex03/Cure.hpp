@@ -1,21 +1,21 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
 #include <iostream>
+#include "AMateria.hpp"
 
-class AAnimal
+class Cure: public AMateria
 {
     public:
-        AAnimal(void);
-        AAnimal(std::string type);
-        AAnimal(const AAnimal& src);
-        AAnimal& operator=(const AAnimal& rhs);
-        virtual ~AAnimal(void);
-		virtual void makeSound(void) const = 0;
-        std::string getType( void ) const;
+        Cure(void);
+		Cure(std::string type);
+        Cure(const Cure& src);
+        Cure& operator=(const Cure& rhs);
+        ~Cure(void);
+		AMateria* clone() const;
+		void use(ICharacter& target);
 
-    protected:
-		std::string _type;
+    private:
 
 };
 

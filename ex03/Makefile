@@ -1,13 +1,13 @@
 RESET				= \e[0m\033[0m
 GREEN				= \033[0;32m\e[1m
 
-NAME				= Abstract
+NAME = Materia
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -g3 -std=c++98 -MMD -MP
 
 SRC_DIR				= .
-SRCS				= main.cpp Brain.cpp AAnimal.cpp Cat.cpp Dog.cpp
+SRCS				= main.cpp Character.cpp
 
 RM					= rm -rf
 OBJS_DIR			= ./objs/
@@ -24,7 +24,7 @@ ${OBJS_DIR}%.o: ${SRC_DIR}/%.cpp
 
 ${NAME}: ${OBJS}
 	@${CC} ${FLAGS} ${OBJS} -o ${NAME}
-	@echo "${GREEN}ex02		: DONE!${RESET}"
+	@echo "${GREEN}ex03		: DONE!${RESET}"
 
 all: ${NAME}
 
