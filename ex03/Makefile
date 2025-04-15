@@ -7,7 +7,7 @@ CC					= c++
 FLAGS				= -Wall -Wextra -Werror -g3 -std=c++98 -MMD -MP
 
 SRC_DIR				= .
-SRCS				= main.cpp Character.cpp
+SRCS				= main.cpp Character.cpp AMateria.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 RM					= rm -rf
 OBJS_DIR			= ./objs/

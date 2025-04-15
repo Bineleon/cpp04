@@ -6,19 +6,35 @@
 
 class Character: public ICharacter
 {
-    public:
-        Character(void);
-        Character(const Character& src);
-        Character& operator=(const Character& rhs);
-        ~Character(void);
+	private:
+		typedef struct s_floor
+		{
+			AMateria			*ptr;
+			struct s_floor	    *next;
+		}							t_floor;
+		t_floor* _floor;
+		std::string _name;
+		AMateria* _inventory[4];
+
+	public:
+		Character(void);
+		Character(const Character& src);
+		Character(std::string const &name);
+		Character& operator=(const Character& rhs);
+		~Character(void);
 		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
-
-    private:
-
+		void initInvetory(void);
+		void addToFloor(AMateria *m);
+		void shiftTabLeft(int idx);
+		void deleteInvetory(void);
+		void cleanFloor(void);
+		void copyFloor(t_floor* const src);
+		void copyInventory(const Character& rhs);
 };
+
 
 # define RESET "\033[0m"
 # define SMRED "\033[0;31m"

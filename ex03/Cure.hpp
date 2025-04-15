@@ -12,7 +12,7 @@ class Cure: public AMateria
         Cure(const Cure& src);
         Cure& operator=(const Cure& rhs);
         ~Cure(void);
-		AMateria* clone() const;
+		Cure* clone() const;
 		void use(ICharacter& target);
 
     private:

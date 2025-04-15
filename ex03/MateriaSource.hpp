@@ -2,16 +2,25 @@
 #define MATERIASOURCE_HPP
 
 #include <iostream>
+#include "IMateriaSource.hpp"
 
-class MateriaSource
+class MateriaSource: public IMateriaSource
 {
     public:
         MateriaSource(void);
         MateriaSource(const MateriaSource& src);
         MateriaSource& operator=(const MateriaSource& rhs);
         ~MateriaSource(void);
+        void learnMateria(AMateria* m);
+		AMateria* createMateria(std::string const & type);
+        void initInvetory(void);
+        void deleteInvetory(void);
+		void copyInventory(const MateriaSource& rhs);
+        AMateria* getInventory(int i);
+
 
     private:
+        AMateria* _inventory[4];
 
 };
 
