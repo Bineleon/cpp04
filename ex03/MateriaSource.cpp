@@ -2,22 +2,23 @@
 
 MateriaSource::MateriaSource(void)
 {
-    std::cout << "MateriaSource default constructor called" << std::endl;
-    initInvetory();
+    // std::cout << "MateriaSource default constructor called" << std::endl;
+    initInventory();
 }
 
 MateriaSource::MateriaSource(const MateriaSource& src)
 {
-    std::cout << "MateriaSource copy constructor called" << std::endl;
+    // std::cout << "MateriaSource copy constructor called" << std::endl;
     *this = src;
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& rhs)
 {
-    std::cout << "MateriaSource copy assignment operator called" << std::endl;
+    // std::cout << "MateriaSource copy assignment operator called" << std::endl;
     if (this != &rhs)
     {
-        deleteInvetory();
+        deleteInventory();
+		initInventory();
         copyInventory(rhs);
     }
     return *this;
@@ -25,8 +26,8 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& rhs)
 
 MateriaSource::~MateriaSource(void)
 {
-    std::cout << "MateriaSource destructor called" << std::endl;
-    deleteInvetory();
+    // std::cout << "MateriaSource destructor called" << std::endl;
+    deleteInventory();
 }
 
 void MateriaSource::learnMateria(AMateria* m)
@@ -37,31 +38,47 @@ void MateriaSource::learnMateria(AMateria* m)
     while (i < 4 && _inventory[i])
         i++;
     if (i < 4)
-        _inventory[i] = m->clone();
+	{
+		std::cout << SMMAGENTA << "Learning new Materia : \"" << m->getType() << "\",	at index : " << i << RESET << std::endl;
+        _inventory[i] = m;
+	}
+	else
+	{
+		std::cout << SMRED << "Inventory full capacity reached" << RESET << std::endl;
+		delete m;
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
+	if (type != "cure" && type != "ice")
+	{
+		std::cout << SMRED << "Error: Trying to create unknown materia : " << type << RESET << std::endl;
+		return 0;
+	}
     for (int i = 0; i < 4; i++)
     {
         if (i >= 0 && i < 4 && _inventory[i] && _inventory[i]->getType() == type)
+		{
+			std::cout << SMMAGENTA << "New Materia : \"" << type << "\"	created" << RESET << std::endl;
             return (_inventory[i]->clone());
+		}
     }
     return 0;
 }
 
-void MateriaSource::initInvetory(void)
+void MateriaSource::initInventory(void)
 {
-    for (int i = 0; i < 4 && _inventory[i]; ++i)
+    for (int i = 0; i < 4; ++i)
         _inventory[i] = NULL;
 }
 
-void MateriaSource::deleteInvetory(void)
+void MateriaSource::deleteInventory(void)
 {
-    for (int i = 0;  i < 4 && _inventory[i]; i++)
+	for (int i = 0; i < 4; i++)
     {
-        delete _inventory[i];
-        _inventory[i] = NULL;
+		if (_inventory[i])
+			delete _inventory[i];
     }
 }
 
@@ -73,7 +90,7 @@ void MateriaSource::copyInventory(const MateriaSource& src)
 
 AMateria* MateriaSource::getInventory(int i)
 {
-    if (i >= 0 && i < 4)
+    if (i >= 0 && i < 4 && _inventory[i])
         return (_inventory[i]);
     return NULL;
 }

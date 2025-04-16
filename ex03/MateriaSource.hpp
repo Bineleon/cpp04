@@ -13,8 +13,8 @@ class MateriaSource: public IMateriaSource
         ~MateriaSource(void);
         void learnMateria(AMateria* m);
 		AMateria* createMateria(std::string const & type);
-        void initInvetory(void);
-        void deleteInvetory(void);
+        void initInventory(void);
+        void deleteInventory(void);
 		void copyInventory(const MateriaSource& rhs);
         AMateria* getInventory(int i);
 
