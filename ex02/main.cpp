@@ -23,7 +23,7 @@ int main(void)
 {
 	// {
 	// 	printHeader("Test : Animal instance (should fail)");
-	// 	const AAnimal* i = new Animal();
+	// 	const AAnimal* i = new AAnimal();
 	
 	// 	delete i;
 	// }
@@ -32,11 +32,12 @@ int main(void)
 		const AAnimal* j = new Dog();
 		const AAnimal* i = new Cat();
 	
-		delete j;//should not create a leak
+		delete j;
 		delete i;
 	}
     {
 		printHeader("Test : Half cat, half Dog AAnimal array");
+
         int size = 10;
         const AAnimal* animals[size];
 
@@ -58,6 +59,7 @@ int main(void)
     }
 	{
 		printHeader("Test : Deep copy Cat");
+
 		Cat cat1;
 		cat1.getBrain()->setIdea(0, "Play with cork");
 		std::cout << "Cat1 idea[0] : " << cat1.getBrain()->getIdea(0) << std::endl;
@@ -71,6 +73,7 @@ int main(void)
 	}
 	{
 		printHeader("Test : Deep copy Dog");
+		
 		Dog dog1;
 		dog1.getBrain()->setIdea(0, "Play with ball");
 		std::cout << "Dog1 idea[0] : " << dog1.getBrain()->getIdea(0) << std::endl;

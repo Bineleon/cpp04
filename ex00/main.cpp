@@ -67,10 +67,14 @@ int main(void)
 
 		const WrongAnimal* wrongMeta = new WrongAnimal();
 		const WrongAnimal* wrongCat = new WrongCat();
+		WrongCat wrongCat1;
 
-		std::cout << "WrongAnimal type: " << wrongCat->getType() << std::endl;
+		std::cout << "WrongAnimal : " << wrongCat->getType() << std::endl;
 		wrongCat->makeSound();
+		std::cout << "WrongAnimal : " << wrongMeta->getType() << std::endl;
 		wrongMeta->makeSound();
+		std::cout << "WrongCat sound : " << std::endl;
+		wrongCat1.makeSound();
 
 		delete wrongMeta;
 		delete wrongCat;
