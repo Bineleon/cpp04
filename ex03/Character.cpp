@@ -81,10 +81,18 @@ void Character::use(int idx, ICharacter& target)
 void Character::addToFloor(AMateria* m)
 {
     t_floor* newNode = new t_floor;
-
     newNode->ptr = m;
-    newNode->next = _floor;
-    _floor = newNode;
+    newNode->next = NULL;
+
+    if (!_floor)
+        _floor = newNode;
+    else
+    {
+        t_floor* tmp = _floor;
+        while (tmp->next)
+            tmp = tmp->next;
+        tmp->next = newNode;
+    }
 }
 
 void Character::shiftTabLeft(int idx)
@@ -128,7 +136,7 @@ void Character::copyFloor(t_floor* src)
 
 // void Character::copyFloor(t_floor* src)
 // {
-//     _floor = NULL; // On repart d'une liste vide
+//     _floor = NULL;
 //     t_floor* head = NULL;
 //     t_floor* tail = NULL;
 
