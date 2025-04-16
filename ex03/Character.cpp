@@ -126,6 +126,37 @@ void Character::copyFloor(t_floor* src)
     }
 }
 
+// void Character::copyFloor(t_floor* src)
+// {
+//     _floor = NULL; // On repart d'une liste vide
+//     t_floor* head = NULL;
+//     t_floor* tail = NULL;
+
+//     while (src)
+//     {
+//         AMateria* clone = src->ptr->clone();
+//         t_floor* newNode = new t_floor;
+//         newNode->ptr = clone;
+//         newNode->next = NULL;
+
+//         if (!head)
+//         {
+//             head = newNode;
+//             tail = newNode;
+//         }
+//         else
+//         {
+//             tail->next = newNode;
+//             tail = newNode;
+//         }
+
+//         src = src->next;
+//     }
+
+//     _floor = head;
+// }
+
+
 void Character::copyInventory(const Character& src)
 {
     for (int i = 0; i < 4 && src._inventory[i]; i++)
