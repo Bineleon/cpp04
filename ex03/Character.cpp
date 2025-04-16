@@ -36,13 +36,13 @@ Character& Character::operator=(const Character& rhs)
 Character::~Character(void)
 {
     std::cout << "Character destructor called" << std::endl;
-    cleanFloor();
+    // cleanFloor();
     deleteInvetory();
 }
 
 void Character::initInvetory(void)
 {
-    for (int i = 0; _inventory[i] && i < 4; ++i)
+    for (int i = 0; i < 4 && _inventory[i]; ++i)
         _inventory[i] = NULL;
 }
 
@@ -90,13 +90,13 @@ void Character::addToFloor(AMateria* m)
 void Character::shiftTabLeft(int idx)
 {
     for (int i = idx; i < 3; i++)
-        _inventory[idx] = _inventory[idx + 1];
+        _inventory[i] = _inventory[i + 1];
     _inventory[3] = NULL;
 }
 
 void Character::deleteInvetory(void)
 {
-    for (int i = 0; _inventory[i] && i < 4; i++)
+    for (int i = 0; i < 4 && _inventory[i] ; i++)
     {
         delete _inventory[i];
         _inventory[i] = NULL;
@@ -116,12 +116,13 @@ void Character::cleanFloor(void)
     }
 }
 
-void Character::copyFloor(t_floor* const src)
+void Character::copyFloor(t_floor* src)
 {
     while (src)
     {
         AMateria *copy = src->ptr->clone();
         addToFloor(copy);
+        src = src->next;
     }
 }
 

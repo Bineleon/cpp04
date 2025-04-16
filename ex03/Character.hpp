@@ -31,7 +31,7 @@ class Character: public ICharacter
 		void shiftTabLeft(int idx);
 		void deleteInvetory(void);
 		void cleanFloor(void);
-		void copyFloor(t_floor* const src);
+		void copyFloor(t_floor* src);
 		void copyInventory(const Character& rhs);
 };
 

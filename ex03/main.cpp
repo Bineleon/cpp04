@@ -86,10 +86,12 @@ int main(void)
             else
             m2 = src->createMateria("cure");
             if (m2)
+            {
                 std::cout << SMYELLOW << "New Materia \"" << m2->getType() << "\" created" << RESET << std::endl;
+                me->equip(m2);
+            }
             else
                 std::cout << SMRED << "Error: Trying to create unknown materia" << RESET << std::endl;
-            me->equip(m2);
         }
         std::cout << SMYELLOW << "me use 0 on Bob" << RESET << std::endl;
         me->use(0, *bob);
@@ -103,11 +105,17 @@ int main(void)
         std::cout << SMYELLOW << "Using 0...(should work)" << RESET << std::endl;
         me->use(0, *bob);
         std::cout << SMYELLOW << "Using 3...(should not work)" << RESET << std::endl;
-        // me->unequip(6);
         me->use(3, *bob);
+        me->unequip(6);
 
-        delete me;
+
+        printHeader("Test : Copy and assignations");
+        Character* clone = new Character(*dynamic_cast<Character*>(me));
+        clone->use(1, *bob);
+
+        std::cout << "\nICI\n";
         delete bob;
+        delete me;
         delete src;
     }
     return 0;
